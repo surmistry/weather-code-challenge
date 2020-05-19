@@ -31,6 +31,17 @@ const weather = require('weather-js');
     return args.length > 0 ? (sanitizeInputs(args)) : false;
   }
 
+  const displayWeather = (city, units = "C") => `${
+    city.observationpoint
+    } currently is ${
+    city.temperature
+    }°${
+    units
+    } and is the time is ${
+    city.observationtime
+    }\n`
+  // Time is accurate to approximately 15 minutes
+
 
   const findWeather = (city, units = "C") => new Promise((resolve, reject) => {
     weather.find(
@@ -43,5 +54,6 @@ const weather = require('weather-js');
 
   [inputCity] = handleArguments(process);
   const answers = await findWeather(inputCity);
-
+  const text = displayWeather(answers)
+  console.log(text)
 })()
