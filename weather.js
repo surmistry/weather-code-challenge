@@ -8,7 +8,6 @@ const weather = require('weather-js');
 // Convert weather script into IIFE to retain propper context in the terminal shell
 (async () => {
 
-
   const checkForPostCode = (check) => {
     const postExp = /^.*[0-9]/;
     return postExp.test(check)
@@ -42,7 +41,6 @@ const weather = require('weather-js');
     }\n`
   // Time is accurate to approximately 15 minutes
 
-
   const findWeather = (city, units = "C") => new Promise((resolve, reject) => {
     weather.find(
       { search: city, degreeType: units },
@@ -52,8 +50,12 @@ const weather = require('weather-js');
       })
   });
 
-  [inputCity] = handleArguments(process);
-  const answers = await findWeather(inputCity);
-  const text = displayWeather(answers)
-  console.log(text)
+  const inputCities = handleArguments(process)
+  if (!inputCities) {
+    console.log('Please input comma-separated <cities, postalcodes>')
+    return;
+  }
+  const answers = await Promise.all(inputCities.map(inputCity => findWeather(inputCity)));
+  const text = answers.map((cityData => displayWeather(cityData)));
+  console.log(text.join(''))
 })()
