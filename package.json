@@ -1,0 +1,21 @@
+{
+  "name": "weather-code-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "weather.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/surmistry/weather-code-challenge.git"
+  },
+  "keywords": [],
+  "author": "Suraj Mistry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/surmistry/weather-code-challenge/issues"
+  },
+  "homepage": "https://github.com/surmistry/weather-code-challenge#readme",
+  "dependencies": {
+    "weather-js": "^2.0.0"
+  }
+}
