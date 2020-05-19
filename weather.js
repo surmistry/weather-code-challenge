@@ -3,6 +3,11 @@
 // Convert weather script into IIFE to retain propper context in the terminal shell
 (async () => {
 
+  const checkForPostCode = (check) => {
+    const postExp = /^.*[0-9]/;
+    return postExp.test(check)
+  }
+
   const sanitizeInputs = (cities, separator = ',') => {
     const allCities = cities.join(' ');
     const separatedCities = allCities.split(separator);
